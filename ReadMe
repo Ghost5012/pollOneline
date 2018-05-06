@@ -1,1 +1,7 @@
 project de gestion des élections en ligne
+-le système sera accessible uniquement par les agents d'enregistrement et le 
+president de la cour suprème (responsable de la publication des resultats) 
+avant la date des élections,date à la quelle tous les candidats auront un 
+conte à rebours lancer pour accéder et voter
+-le système de biométrie(reconnaissance faciale) sera utilisé pour s'assurer que l'électeur 
+votant est bien celui s'est enregistré avec les identifiants fournis
