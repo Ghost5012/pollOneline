@@ -6,6 +6,8 @@ from django.urls import path,include
 app_name='vote'
 urlpatterns=[
     path('',IndexView.as_view(),name='index'),
+    path('login',LoginView.as_view(),name='login'),
+    path('home',CheckData.as_view(),name='check'),
 ]
 
 #if settings.DEBUG:

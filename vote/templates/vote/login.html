@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <form method="POST" action="{%url 'vote:check'%}">
+            {%csrf_token%}
+            Username: <input type="text" name="nom"><br><br>
+            passWord: <input type="password" name="pw"><br><br>
+            <input type="submit" value="login">
+        </form>
+    </body>
+</html>
