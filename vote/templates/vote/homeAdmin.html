@@ -4,5 +4,14 @@
     </head>
     <body>
         <p>Welcome Administrator {{electeur.name}}</p>
+        <form method="post" action="{%url 'vote:regVoter'%}">
+            {%csrf_token%}
+            CNI number:<input type="integer" name="cni">
+            Name      :<input type="text" name="nom">
+            Surname   :<input type="text" name="surname">
+            date of birth:<input type="date" name="dob">
+            <input type="submit" value="Reg">
+        </form>
+        <p><a href="{%url 'vote:index'%}">logout</a></p>
     </body>
 </html>

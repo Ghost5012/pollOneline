@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,get_object_or_404,redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from . models import *
+from django.urls import reverse
 from django.views import View
-from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
 import datetime, time
 eldate=datetime.date(2018,5,9)#définis la date des élections
 # Create your views here.
@@ -43,9 +42,28 @@ class CheckData(View):
                     else:
                         message=''
                         context={'message':message,'electeur':voter}
+                        login(request,user)#ouverture d'une session pour l'utilisateur en cour
                         return render(request,'vote/homeVoter.html',context)
                 else:
                     context={'admin':admin,'electeur':voter}
+                    login(request,user)#ouverture d'une session pour l'utilisateur en cour
                     return render(request,'vote/homeAdmin.html',context)
         else:
             return HttpResponse('User not defined')
+
+class RegisterVoter(View):
+    def post(self,request):
+        cni=request.POST['cni']
+        name=request.POST['nom']
+        surname=request.POST['surname']
+        dob=request.POST['dob']
+        electeur=Voters(cni_number=int(cni),name=name,surname=surname,date_of_birth=dob)
+        user=User.objects.create_user(name,'',cni)
+        user.save()
+        electeur.save()
+        return render(request,'vote/homeAdmin.html')
+
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        return render(request,'vote/index.html')
