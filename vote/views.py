@@ -5,7 +5,8 @@ from django.urls import reverse
 from django.views import View
 from django.contrib.auth import authenticate, login
 import datetime, time
-eldate=datetime.date(2018,5,9)#définis la date des élections
+eldate=datetime.date(2018,5,13)#définis la date des élections
+regEnd=datetime.date(2018,5,12)#date de fin des enregistrements
 # Create your views here.
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
@@ -45,9 +46,20 @@ class CheckData(View):
                         login(request,user)#ouverture d'une session pour l'utilisateur en cour
                         return render(request,'vote/homeVoter.html',context)
                 else:
-                    context={'admin':admin,'electeur':voter}
-                    login(request,user)#ouverture d'une session pour l'utilisateur en cour
-                    return render(request,'vote/homeAdmin.html',context)
+                    if regEnd.year==datetime.date.today().year and (regEnd.month<datetime.date.today().month or regEnd.day<datetime.date.today().day):
+                        if datetime.date.today()==eldate:
+                            message='Vous avez moins de 24h pour voter pour votre candidat'
+                            context={'message':message,'electeur':voter}
+                            return render(request,'vote/homeVoter.html',context)
+                        else:
+                            message=''
+                            context={'message':message,'electeur':voter}
+                            login(request,user)#ouverture d'une session pour l'utilisateur en cour
+                            return render(request,'vote/homeVoter.html',context)
+                    else:
+                        context={'admin':admin,'electeur':voter}
+                        login(request,user)#ouverture d'une session pour l'utilisateur en cour
+                        return render(request,'vote/homeAdmin1.html',context)
         else:
             return HttpResponse('User not defined')
 
