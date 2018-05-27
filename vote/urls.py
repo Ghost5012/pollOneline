@@ -8,7 +8,9 @@ urlpatterns=[
     path('',IndexView.as_view(),name='index'),
     path('login',LoginView.as_view(),name='login'),
     path('home',CheckData.as_view(),name='check'),
-    path('register',RegisterVoter.as_view(),name='regVoter')
+    path('logout',LogoutView.as_view(),name='logout'),
+    path('register',RegisterVoter.as_view(),name='regVoter'),
+    path('analyse',ImgSave.as_view(),name='analyse')
 ]
 
 #if settings.DEBUG:

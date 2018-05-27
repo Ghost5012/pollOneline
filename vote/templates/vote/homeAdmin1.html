@@ -1,74 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "vote/homebase.html" %}
+{%block title%}Admin page{% endblock %}
 
-    <head>
-			{% load static %}
-
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>Register Voters</title>
-	
-			<!-- CSS -->
-			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-			<link rel="stylesheet" href="{% static 'vote/bootstrap/css/bootstrap.min.css' %}">
-			<link rel="stylesheet" href="{% static 'vote/font-awesome/css/font-awesome.min.css' %}">
-			<link rel="stylesheet" href="{% static 'vote/css/form-elements.css' %}">
-			<link rel="stylesheet" href="{% static 'vote/css/style.css' %}">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="{% static 'vote/ico/favicon.png'%}">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'vote/ico/apple-touch-icon-144-precomposed.png' %}">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'vote/ico/apple-touch-icon-114-precomposed.png' %}">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'vote/ico/apple-touch-icon-72-precomposed.png' %}">
-        <link rel="apple-touch-icon-precomposed" href="{% static 'vote/ico/apple-touch-icon-57-precomposed.png' %}">
-
-    </head>
-
-    <body style="background:black;">
-
-		<!-- Top menu -->
-		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Bootstrap Registration Form Template</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<span class="li-social">
-								<a href="#"><i class="fa fa-facebook"></i></a> 
-								<a href="#"><i class="fa fa-twitter"></i></a> 
-								<a href="#"><i class="fa fa-envelope"></i></a> 
-								<a href="#"><i class="fa fa-skype"></i></a>
-							</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-        <!-- Top content -->
-        <div class="top-content">
+{%block content%}
+		<!-- Top content -->
+		{%load static%}
+        <div class="top-content" style="background-image:url({% static 'vote/img/backgrounds/7.jpg' %});">
         	
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-7 text">
+                        <div class="col-sm-5 text">
                             <h1><strong>ELECAM</strong> Registration Campaign</h1>
                             <div class="description">
                             	<p>
@@ -78,7 +19,7 @@
                             </div>
                         </div>
                         <div class="col-sm-5 form-box">
-                        	<div class="form-top">
+                        	<div class="form-top" style="margin-top:0%;">
                         		<div class="form-top-left">
                         			<h3>Register here</h3>
                             		<p>Fill in the form below:</p>
@@ -88,15 +29,17 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="registration-form">
+			                    <form role="form" action="{%url 'vote:regVoter'%}" method="post" class="registration-form">
 									{%csrf_token%}
-									<div class="form-group">
-										<label class="sr-only" for="form-id-card">ID card</label>
-										<input type="text" name="cni" placeholder="ID card number..." class="form-first-name form-control" id="form-first-name">
+									<div class="col-md-4 col-md-offset-4">
+										<button type="button" style="background:transparent;border:none" data-toggle="modal" data-target="#myModal">
+											<img src="{% static 'vote/img/webcam.png' %}" class="img-responsive" />
+										</button>
+										<h4 class="text-center">Picture</h4>
 									</div>
 									<div class="form-group">
 			                    		<label class="sr-only" for="form-first-name">First name</label>
-			                        	<input type="text" name="nom" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+			                        	<input type="text" name="nom" placeholder= "Name..." class="form-first-name form-control" id="form-first-name">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-last-name">Last name</label>
@@ -105,32 +48,17 @@
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-dob">Email</label>
 			                        	<input type="date" name="dob" class="form-date form-control" id="form-date">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-picture">About yourself</label>
-										<input type="file" name='face' value="picture">
 									</div>
+									<div class="form-group">
 			                        <button type="submit" class="btn">Sign me up!</button>
-			                    </form>
+									</div>
+								</form>
 		                    </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-        </div>
-
-        {% load static %}
-        <!-- Javascript -->
-        <script src="{% static 'vote/js/jquery-1.11.1.min.js' %}"></script>
-        <script src="{% static 'vote/bootstrap/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'vote/js/jquery.backstretch.min.js' %}"></script>
-        <script src="{% static 'vote/js/scripts.js' %}"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
-
-    </body>
-
-</html>
+		</div>
+{% endblock %}
+	

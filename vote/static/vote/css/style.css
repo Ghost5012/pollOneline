@@ -104,7 +104,7 @@ img { max-width: 100%; }
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-	margin-top: 35px;
+	margin-top: 0px;
 }
 
 .form-top {
@@ -118,7 +118,7 @@ img { max-width: 100%; }
 .form-top-left {
 	float: left;
 	width: 75%;
-	padding-top: 25px;
+	padding-top: 0px;
 }
 
 .form-top-left h3 { margin-top: 0; }
@@ -126,7 +126,7 @@ img { max-width: 100%; }
 .form-top-right {
 	float: left;
 	width: 25%;
-	padding-top: 5px;
+	padding-top: 0px;
 	font-size: 66px;
 	color: #ddd;
 	line-height: 100px;
@@ -135,6 +135,7 @@ img { max-width: 100%; }
 
 .form-bottom {
 	padding: 25px 25px 30px 25px;
+	height: 50%;
 	background: #eee;
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 	text-align: left;
@@ -182,4 +183,108 @@ img { max-width: 100%; }
 	h1, h2 { font-size: 32px; }
 
 }
-
+#timer{
+	margin-left: 12px;
+}
+html{
+	/*background: white;*/
+}
+body{
+	background: #222;
+	
+}
+#bloc_page{
+	width: 1000px;min-height: 633px;
+	margin: auto;
+	/*background: #222;*/
+	background: rgb(31, 31, 31);
+}
+#whole_page{				
+	background: rgb(31, 31, 31);
+}
+.heading{
+	font-family: "arial black";
+	font-weight: bold;
+	font-size: 29px;
+	color: white;
+}
+.heading_color{
+	color: #5cb85c;	
+}
+.page-footer{
+	text-align: center;
+	/*color: white;*/
+}
+#myslideshow, #settings{
+	background: black;
+	color: white;
+	margin: 5px;
+	border-radius: 5px;
+}
+#myslideshow img{
+	margin-top: 24px;
+	border-radius: 5px;
+}
+#bottom_rows{
+	background: black;
+	padding-top: 32px;
+	color: white;
+}
+ul .services, p .services{
+	padding-left: 4px;
+	text-align: left;
+}
+#title_services{
+	padding: 6px;
+	font-size: 20px;
+}
+.modal-header, h4, .accdetails,.close {
+background-color: #5cb85c;
+color:white !important;
+text-align: center;
+font-size: 30px;
+}
+.modal-footer {
+background-color: #f9f9f9;
+}
+.forgot_password{
+color: #5cb85c;
+}
+.forgot_password:hover{
+text-decoration: underline;
+color: #5cb85c;
+}
+#acc_details{
+background: black;
+font-size: 24px;
+}
+#acc_details .table, .accdetails{
+margin-top: 32px;
+}
+#tabs {
+text-align: center;
+}
+#tabs td:hover{
+background: #5cb85c;
+}
+#alert_info, #alert_danger{
+text-align: center;
+}
+.page-footer{
+text-align: center;
+background: black;
+}
+#welcome{
+float: right;
+background: black;
+padding: 13px;
+}
+.personalise{
+list-style-type: none;
+padding: 4px;
+color: black;
+}
+.bold{
+font-weight: bold;
+font-size: 13px;
+}

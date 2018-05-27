@@ -12,10 +12,14 @@ class Voters(User):
     date_of_birth=models.DateField()
     picture=models.ImageField(upload_to="faces/")
 
+
+class Parties(models.Model):
+    p_name=models.CharField(max_length=50)
+    logo=models.ImageField(upload_to="logos/")
+    
 class Candidates(Voters):
     """regroupe les candidats en lisse pour les élections en cours"""
-    p_party=models.CharField(max_length=15,primary_key=True)
-    logo=models.ImageField(upload_to="logos/")
+    p_party=models.ForeignKey(Parties,on_delete=models.CASCADE)
 
 class Admin(Voters):
     """regroupe toute les personnes responsables responsables de l'enregistrement 
@@ -23,7 +27,7 @@ class Admin(Voters):
     la cour suprème) """
     level=[("Agent","Agent"),("President","Surpeme court présidents")]
     status=models.CharField(max_length=12,choices=level)
-
+    
 class Votes(models.Model):
     """enregitre les votes des électeurs"""
     electeur=models.ForeignKey(Voters,on_delete=models.CASCADE)
