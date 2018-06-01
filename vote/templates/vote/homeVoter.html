@@ -1,59 +1,24 @@
-{%extends "vote/homebase.html%}
+{%extends "vote/homebase.html"%}
 {%block title%}Vote here{%endblock%}
-    {%block content%}
-        <div class="top-content">
-        	
-        	<div class="top-content-gradient gradient"></div>
+	{%block content%}
+		{%load static%}
+        <div class="top-content"style="background-image:url({% static 'vote/img/backgrounds/7.jpg' %});">
         	
         	<!-- Top menu -->
-			<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="index.html">Uizer - Bootstrap Coming Soon Template</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="top-navbar-1">
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<span class="li-text">
-									Put some text or
-								</span> 
-								<a href="#"><strong>links</strong></a> 
-								<span class="li-text">
-									here, or some icons: 
-								</span> 
-								<span class="li-social">
-									<a href="#"><span class="social_facebook"></span></a> 
-									<a href="#"><span class="social_twitter"></span></a> 
-									<a href="#"><span class="social_googleplus"></span></a> 
-									<a href="#"><span class="social_skype"></span></a> 
-								</span>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-        	
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 text">
                             <h1 class="wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="1s">
-                            	We're Coming <strong>Soon</strong>
+                            	2018 Election <strong>Day</strong>
                             </h1>
                             <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
                             	<p>
-	                            	We are working very hard on the new version of our site. It will bring a lot of new features. 
-	                            	Sign up in the form below and you'll be one of the first to know when the site is ready.
+									This page is for Cameroonians citizens only, those who get their self registered 
+									on the élection lists
                             	</p>
                             </div>
-                            <div class="timer wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2.5s">
+                        <!--    <div class="timer wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2.5s">
                                 
                                 <div class="hours-wrapper">
                                     <span class="hours"></span> <span class="t-text">hours /</span>
@@ -64,7 +29,7 @@
                                 <div class="seconds-wrapper">
                                     <span class="seconds"></span> <span class="t-text">seconds</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="subscribe wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="3s">
 	                			<form class="form-inline" role="form" action="assets/subscribe.php" method="post">
 									{% csrf_token %}
@@ -77,7 +42,9 @@
 			                    <div class="success-message"></div>
 			                    <div class="error-message"></div>
                             </div>
-                        </div>
+					   
+						
+						</div>
                     </div>
                 </div>
             </div>

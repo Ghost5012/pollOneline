@@ -10,7 +10,11 @@ urlpatterns=[
     path('home',CheckData.as_view(),name='check'),
     path('logout',LogoutView.as_view(),name='logout'),
     path('register',RegisterVoter.as_view(),name='regVoter'),
-    path('analyse',ImgSave.as_view(),name='analyse')
+    path('analyse',ImgSave.as_view(),name='analyse'),
+    path('regparty',RegParty.as_view(),name='regParty'),
+    path('saveP',SaveParty.as_view(),name="saveParty"),
+    path('regcand',RegCandidates.as_view(),name='regCand'),
+    path('regCandidates',RegAgents.as_view(),name='regAgents'),
 ]
 
 #if settings.DEBUG:

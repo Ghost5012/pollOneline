@@ -7,9 +7,9 @@
             <div class="col-md-3">
                 <h4 id="title_services">Political parties</h4>
                 <ul class="services" style="text-align:left">
-                        <li><a href="#">Lorem ipsum</a></li>
-                        <li><a href="#">Lorem ipsum</a></li>
-                        <li><a href="#">Lorem ipsum</a></li>
+                    {%for p in party%}
+                        <li><a href="#">{{p.p_name}}</a></li>
+                    {%endfor%}
                 </ul>
             </div>
             <div class="col-md-3" style="text-align:left">

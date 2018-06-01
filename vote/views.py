@@ -156,7 +156,9 @@ def trainer(request):
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
     def get(self,request):
-        return render(request,'vote/index.html')
+        party=Parties.objects.order_by('pk')
+        context={'party':party}
+        return render(request,'vote/index.html',context)
 
 class LoginView(View):
     """vue de la page d'acceuil, pour le login"""
@@ -236,3 +238,58 @@ class LogoutView(View):
     def get(self,request):
         logout(request)
         return render(request,'vote/index.html')
+    
+class RegParty(View):
+    """vue chargée de retourner la page d'enregistrement des parties politiques"""
+    def get(self,request):
+        return render(request,'vote/regParty.html')
+class RegCandidates(View):
+    def get(self,request):
+        party=Parties.objects.order_by('pk')
+        context={'party':party}
+        return render(request,'vote/regCandidates.html',context)
+class RegAgents(View):
+    def get(self,request):
+            return render(request,'vote/RegisterAgents.html')
+class SaveParty(View):
+    """cette vue enregistre les parties politiques dans la base de données"""
+    def post(self,request):
+        pname=request.POST['party']
+        logo=request.POST['logo']
+        party=Parties(p_name=pname,logo=logo)
+        party.save()
+        return render(request,'vote/superAdmin.html')
+
+class SaveCandidates(View):
+    """cette vue enregistre les parties politiques dans la base de données"""
+    def post(self,request):
+        name=request.POST['nom']
+        sname=request.POST['surname']
+        dob=request.POST['dob']
+        pname=request.POST['party']
+        candidate=Candidates(name=name,surname=sname,date_of_birth=dob,p_party=party)
+        candidate.save()
+        return render(request,'vote/superAdmin.html')
+
+class SaveAgents(View):
+    """cette vue enregistre les agents d'enregistrement"""
+    def post(self,request):
+        cni=request.POST['cni']
+        name=request.POST['nom']
+        surname=request.POST['surname']
+        dob=request.POST['dob']
+        pic =cni+'.jpg' #BASE_DIR+'/faces'
+        electeur=Voters(cni_number=int(cni),name=name,surname=surname,date_of_birth=dob,picture=pic)
+        user=User.objects.create_user(name,'',cni)
+        if user.save():
+            electeur.save()
+        else:
+            return HttpResponse('Erreur 1')
+        agent=Admin(Voters=electeur)
+        if agent.save():  
+            user.set_password(cni)
+            user.save()
+        else:
+            return HttpResponse("Erreur2")
+        return render(request,'vote/homeAdmin.html')
+        

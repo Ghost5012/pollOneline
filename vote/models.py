@@ -26,7 +26,7 @@ class Admin(Voters):
     des électeurs(les agents) et de la surveillance des élections(le président de 
     la cour suprème) """
     level=[("Agent","Agent"),("President","Surpeme court présidents")]
-    status=models.CharField(max_length=12,choices=level)
+    status=models.CharField(max_length=12,choices=level,default="Agent")
     
 class Votes(models.Model):
     """enregitre les votes des électeurs"""
